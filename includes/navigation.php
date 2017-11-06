@@ -9,30 +9,18 @@
 
             <?php
               $query = "SELECT * FROM navigation"; 
-              $result = mysqli_query($connection, $query);
+              $query_select_navigation = mysqli_query($connection, $query);
 
-              $nav = mysqli_fetch_assoc($result);
+              
 
-                echo "<li class='nav-item active'>
-              <a class='nav-link' href='#'>{nav}
-                <span class='sr-only'>(current)</span></a>
-            </li>";
+               while ($row = mysqli_fetch_assoc($query_select_navigation)) {
+                 $nav_title = $row['nav_title'];
+
+                 echo "<li class='nav-item'><a class='nav-link' href='#'>{$nav_title}</a></li>";
+               }
               
             ?>
-            <!-- <li class="nav-item active">
-              <a class="nav-link" href="#">Home
-                <span class="sr-only">(current)</span>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">About</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Services</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Contact</a>
-            </li> -->
+            
           </ul>
         </div>
       </div>
